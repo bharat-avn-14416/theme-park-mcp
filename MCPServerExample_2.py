@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+import os
 
 # Get port from environment variable (Render sets this)
 port = int(os.environ.get("PORT", 8001))
