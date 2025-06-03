@@ -1,7 +1,9 @@
 from mcp.server.fastmcp import FastMCP
 
+# Get port from environment variable (Render sets this)
+port = int(os.environ.get("PORT", 8001))
 # Initialize FastMCP server through SSE
-mcp = FastMCP("theme-park-server", port=8001)
+mcp = FastMCP("theme-park-server", port=port)
 
 @mcp.tool()
 def get_themepark_location(name: str) -> str:
@@ -54,4 +56,4 @@ def send_email(to: str, subject: str, body: str) -> bool:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='sse')
+    mcp.run(transport='sse', host='0.0.0.0')
