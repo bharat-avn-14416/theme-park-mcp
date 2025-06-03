@@ -1,7 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server through SSE
-mcp = FastMCP("theme-park-server", stateless_http=True)
+mcp = FastMCP("theme-park-server", port=8001)
 
 @mcp.tool()
 def get_themepark_location(name: str) -> str:
@@ -54,4 +54,4 @@ def send_email(to: str, subject: str, body: str) -> bool:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='streamable-http')
+    mcp.run(transport='sse')
